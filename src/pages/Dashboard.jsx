@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <h1 className="text-2xl font-bold mb-4">CNAPP Dashboard</h1>
+      <h1>CNAPP Dashboard</h1>
 
       {/* Search Bar */}
       <input
