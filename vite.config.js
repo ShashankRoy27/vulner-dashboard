@@ -1,11 +1,13 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
   server: {
-    host: true, // Ensures the app is accessible externally
-    port: process.env.PORT || 3000, // Bind to Render's PORT or default to 3000
+    host: true, // Allows external access
+    port: process.env.PORT || 3000, // Binds to the Render port
+  },
+  preview: {
+    allowedHosts: ["cnapp-dashboard.onrender.com"], // Add your Render URL here
   },
   plugins: [react()],
 });
