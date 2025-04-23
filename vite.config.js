@@ -7,7 +7,7 @@ export default defineConfig({
     port: process.env.PORT || 3000, // Binds to the Render port
   },
   preview: {
-    allowedHosts: ["cnapp-dashboard.onrender.com"], // Add your Render URL here
+    allowedHosts: ["vulner-dashboard.onrender.com"], // Add your Render URL here
   },
   plugins: [react()],
 });
