@@ -24,7 +24,7 @@ const LineChartComponent = ({ dataObject }) => {
       
       {/* Number and Label styling matched to existing widget */}
       <div style={{ display: "flex", alignItems: "baseline", justifyContent: "center", gap: "0.25rem" }}>
-        <strong style={{ fontSize: "1.1rem", fontWeight: 1200 }}>{total}</strong>
+        <strong style={{ fontSize: "1.1rem", fontWeight: 900}}>{total}</strong>
         <span style={{ fontSize: "0.9rem", color: "#666", fontWeight: 400 }}>
           Total Vulnerabilities
         </span>
