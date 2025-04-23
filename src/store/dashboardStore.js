@@ -1,41 +1,39 @@
+// src/store/dashboardStore.js
 import { create } from "zustand";
+import dashboardData from "../data/dashboardData";
 
 const useDashboardStore = create((set) => ({
-  categories: JSON.parse(localStorage.getItem("categories")) || [],
-  
-  addWidget: (categoryName, widgetName, widgetText) =>
-    set((state) => {
-      const updatedCategories = state.categories.map((category) => {
-        if (category.name === categoryName) {
-          const newWidget = {
-            id: Date.now(),
-            name: widgetName,
-            content: widgetText,
-          };
-          return { ...category, widgets: [...category.widgets, newWidget] };
-        }
-        return category;
-      });
+  categories: dashboardData.categories,
 
-      localStorage.setItem("categories", JSON.stringify(updatedCategories));
-      return { categories: updatedCategories };
+  addWidget: (categoryName, name, type, content) =>
+    set((state) => {
+      const newId = Date.now(); // Unique ID
+      return {
+        categories: state.categories.map((cat) =>
+          cat.name === categoryName
+            ? {
+                ...cat,
+                widgets: [
+                  ...cat.widgets,
+                  { id: newId, name, type, content }
+                ],
+              }
+            : cat
+        ),
+      };
     }),
 
   removeWidget: (categoryName, widgetId) =>
-    set((state) => {
-      const updatedCategories = state.categories.map((category) => {
-        if (category.name === categoryName) {
-          return {
-            ...category,
-            widgets: category.widgets.filter((widget) => widget.id !== widgetId),
-          };
-        }
-        return category;
-      });
-
-      localStorage.setItem("categories", JSON.stringify(updatedCategories));
-      return { categories: updatedCategories };
-    }),
+    set((state) => ({
+      categories: state.categories.map((cat) =>
+        cat.name === categoryName
+          ? {
+              ...cat,
+              widgets: cat.widgets.filter((w) => w.id !== widgetId),
+            }
+          : cat
+      ),
+    })),
 }));
 
 export default useDashboardStore;
