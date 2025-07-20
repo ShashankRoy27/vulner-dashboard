@@ -1,7 +1,3 @@
-Here's a well-defined, complete README file content you can use:
-
----
-
 # 🔐 Vulner Tracker Dashboard
 
 A clean and responsive web dashboard for tracking and visualizing security vulnerabilities. Users can dynamically create chart widgets to display data across categories like CVEs, Malware, and Misconfigurations.
